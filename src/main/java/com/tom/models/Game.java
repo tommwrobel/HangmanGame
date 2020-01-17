@@ -4,7 +4,7 @@ public class Game {
 
     private DifficultyLevel difficultyLevel;
 
-    public Game(DifficultyLevel difficultyLevel) {
+    public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
     }
 

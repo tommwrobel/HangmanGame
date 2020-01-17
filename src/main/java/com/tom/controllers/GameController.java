@@ -2,6 +2,7 @@ package com.tom.controllers;
 
 import com.tom.models.DifficultyLevel;
 import com.tom.models.Game;
+import com.tom.models.Menu;
 import com.tom.models.Player;
 import com.tom.views.GameView;
 
@@ -13,38 +14,68 @@ public class GameController {
     private Player player;
     private GameView gameView;
 
-    public void startNewGame() {
+    public GameController() {
+        this.gameView = new GameView();
+    }
 
+    public Player getPlayer() {
+        return this.player;
+    }
 
-        game = new Game();
+    public void startNewGame(Game game, Player player, GameView gameView) {
+
+        this.game = game;
+        this.player = player;
+        this.gameView = gameView;
 
     }
 
     public DifficultyLevel getDifficultyLevelFromUser() {
+
+        Menu difficultyLevelMenu = new Menu("Łatwy", "Średni", "Trudny");
+        int choosenDifficultyLevelIndex;
+        DifficultyLevel choosenDifficultyLevel = DifficultyLevel.EASY;
+
         gameView.showMessage("Ustaw poziom trudności");
-        getIntFromUser(1, 3);
+        gameView.showMenu(difficultyLevelMenu.getMenuItems());
+        choosenDifficultyLevelIndex = getIntFromUser(1, 3);
+
+        switch(choosenDifficultyLevelIndex) {
+            case 1:
+                choosenDifficultyLevel = DifficultyLevel.EASY;
+                break;
+            case 2:
+                choosenDifficultyLevel = DifficultyLevel.MEDIUM;
+                break;
+            case 3:
+                choosenDifficultyLevel = DifficultyLevel.HARD;
+                break;
+        }
+
+        return choosenDifficultyLevel;
     }
 
     public int getIntFromUser(int from, int to) {
 
-        boolean inputIsValid = false;
-        int userInput;
+        int number;
         Scanner userInput = new Scanner(System.in);
 
         do {
-            if (userInput.hasNextInt()) {
-                userInput = userInput.nextInt();
-                if (userInput >= from || userInput <= to) {
-                    inputIsValid = true;
-                }
+            while(!userInput.hasNextInt()) {
+                gameView.showErrorMessage("Podana wartość nie jest wartością liczbową!");
+                userInput.next();
             }
 
-            if(!inputIsValid) {
-                gameView.showMessage("Nieprawidłowe wejście! Spróbuj jeszcze raz.");
-            }
-        } while (!inputIsValid)
+            number = userInput.nextInt();
 
-        return userInput;
+            if(number < from || number > to) {
+                gameView.showErrorMessage("Podana wartość nie mieści się w zakresie od" + from + " do " + to);
+            }
+
+        } while(number < from || number > to);
+        userInput.close();
+
+        return number;
     }
 
 }

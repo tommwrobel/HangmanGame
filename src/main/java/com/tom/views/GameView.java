@@ -2,7 +2,7 @@ package com.tom.views;
 
 import java.util.List;
 
-public class GameView implements GameViewInterface{
+public class GameView implements GameViewInterface {
 
     public void shwoTitle() {
         System.out.println("+---------------------------+");
@@ -10,21 +10,28 @@ public class GameView implements GameViewInterface{
         System.out.println("+---------------------------+");
     }
 
-    public void showMenu(List<String> menu) {
+    public void showMenu(String[] menu) {
 
-        int menuIndex = 1;
-        for(String menuItem : menu) {
-            System.out.println("[" + menuIndex + "] " + menuItem);
+        int menuItemsCount = menu.length;
+
+        for (int i = 0; i < menuItemsCount; i++) {
+            System.out.println("[" + (i + 1) + "] " + menu[i]);
         }
         System.out.println("Wybierz opcję: ");
     }
 
+    @Override
     public void showMessage(String message) {
         System.out.println(message);
     }
 
+    @Override
+    public void showErrorMessage(String message) {
+        System.out.println(message);
+    }
+
     public void showHangman(int chancesLeft) {
-        switch(chancesLeft) {
+        switch (chancesLeft) {
             case 10:
                 System.out.println("         ");
                 System.out.println("         ");
@@ -129,8 +136,8 @@ public class GameView implements GameViewInterface{
 
         for (String letter : wordLetters) {
             boolean isVisible = false;
-            for(int i = 0; i < guessedLetters.size(); i++) {
-                if(letter.equalsIgnoreCase(guessedLetters.get(i))) {
+            for (int i = 0; i < guessedLetters.size(); i++) {
+                if (letter.equalsIgnoreCase(guessedLetters.get(i))) {
                     isVisible = true;
                 }
             }

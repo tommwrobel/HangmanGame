@@ -2,7 +2,7 @@ package com.tom.models;
 
 public class Player {
 
-    private final String name;
+    private String name;
     int score;
     int chancesLeft;
 
@@ -17,6 +17,10 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getScore() {
