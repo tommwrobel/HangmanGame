@@ -4,7 +4,8 @@ public enum DifficultyLevel {
 
     EASY(10, "łatwy"),
     MEDIUM(8, "średni"),
-    HARD(6, "trudny");
+    HARD(6, "trudny"),
+    CHEATER(100, "cheater");
 
     private int chancesNumber;
     private String displayName;

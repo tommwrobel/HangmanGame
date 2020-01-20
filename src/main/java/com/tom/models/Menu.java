@@ -4,7 +4,7 @@ public enum Menu {
 
     MAIN("Wybierz opcję", "Nowa gra", "Koniec gry"),
     AFTER_ROUND("Rozpocząć kolejną rundę?", "Tak", "Nie"),
-    DIFFICULTY_LEVEL("Wybierz poziom trudności", "Łatwy", "Średni", "Trudny");
+    DIFFICULTY_LEVEL("Wybierz poziom trudności", "Łatwy", "Średni", "Trudny", "Cheater");
 
     private String title;
     private String[] menuItems;

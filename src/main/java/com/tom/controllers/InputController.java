@@ -41,7 +41,7 @@ public class InputController {
                 choosenDifficultyLevel = DifficultyLevel.HARD;
                 break;
             default:
-                choosenDifficultyLevel = DifficultyLevel.EASY;
+                choosenDifficultyLevel = DifficultyLevel.CHEATER;
         }
 
         return choosenDifficultyLevel;

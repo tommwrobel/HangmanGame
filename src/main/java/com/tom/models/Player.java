@@ -30,4 +30,8 @@ public class Player {
         this.score = score;
     }
 
+    public void addScore(int scoreNumber) {
+        this.score += scoreNumber;
+    }
+
 }

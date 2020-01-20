@@ -127,6 +127,13 @@ public class GameView implements GameViewInterface {
                 System.out.println(" |   / \\ ");
                 System.out.println("_|______ ");
                 break;
+            default:
+                System.out.println(" |   _O_ ");
+                System.out.println(" |    |  ");
+                System.out.println(" |    |  ");
+                System.out.println(" |    |  ");
+                System.out.println(" |    |  ");
+                System.out.println("_|___/_\\_");
         }
     }
 
