@@ -2,17 +2,19 @@ package com.tom.models;
 
 public enum Menu {
 
-    MAIN("Wybierz opcję", "Nowa gra", "Rekordy", "Koniec gry"),
+    MAIN("Wybierz opcję", "Nowa gra", "Koniec gry"),
+    AFTER_ROUND("Rozpocząć kolejną rundę?", "Tak", "Nie"),
     DIFFICULTY_LEVEL("Wybierz poziom trudności", "Łatwy", "Średni", "Trudny");
 
-    private String[] title;
+    private String title;
     private String[] menuItems;
 
     Menu(String title, String... menuItems) {
+        this.title = title;
         this.menuItems = menuItems;
     }
 
-    public String[] getTitle() {
+    public String getTitle() {
         return title;
     }
 

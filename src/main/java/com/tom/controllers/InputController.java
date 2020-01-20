@@ -10,9 +10,11 @@ public class InputController {
 
     private GameView gameView;
     private Menu menu;
+    private Scanner scanner;
 
     public InputController(GameView gameView) {
         this.gameView = gameView;
+        scanner = new Scanner(System.in);
     }
 
     public int chooseMenuOption(Menu menu) {
@@ -48,23 +50,42 @@ public class InputController {
     public int getIntFromUser(int from, int to) {
 
         int number;
-        Scanner userInput = new Scanner(System.in);
 
         do {
-            while (!userInput.hasNextInt()) {
+            while (!scanner.hasNextInt()) {
                 gameView.showErrorMessage("Podana wartość nie jest wartością liczbową!");
-                userInput.next();
+                scanner.next();
             }
 
-            number = userInput.nextInt();
+            number = scanner.nextInt();
+            scanner.nextLine();
 
             if (number < from || number > to) {
-                gameView.showErrorMessage("Podana wartość nie mieści się w zakresie od" + from + " do " + to);
+                gameView.showErrorMessage("Podana wartość nie mieści się w zakresie od " + from + " do " + to);
             }
 
         } while (number < from || number > to);
-        userInput.close();
 
         return number;
+    }
+
+    public String getStringFromUser(String message, int minLength, int maxLength) {
+
+        String userInput;
+        gameView.showMessage(message);
+
+        do {
+            userInput = scanner.nextLine();
+
+            if(userInput.length() < minLength || userInput.length() > maxLength) {
+                gameView.showErrorMessage("Wpisany ciąg znaków ma niepoprawną długość [" + minLength + "-" + maxLength + "]!");
+            }
+
+            if(!userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*")) {
+                gameView.showErrorMessage("Wpisany ciąg znaków zawiera niepoprawne znaki!");
+            }
+        } while(userInput.length() < minLength || userInput.length() > maxLength || !userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*"));
+
+        return userInput;
     }
 }

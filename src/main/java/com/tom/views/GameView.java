@@ -23,7 +23,7 @@ public class GameView implements GameViewInterface {
         for (int i = 0; i < menuItemsCount; i++) {
             System.out.println("[" + (i + 1) + "] " + menuItems[i]);
         }
-        System.out.println("Wybierz opcję: ");
+        System.out.println("Twój wybór: ");
     }
 
     @Override
@@ -133,7 +133,6 @@ public class GameView implements GameViewInterface {
     @Override
     public void showWord(List<String> guessedLetters, String word) {
 
-        int numberOfLetters = word.length();
         String[] wordLetters = word.split("(?!^)");
 
         for (String letter : wordLetters) {

@@ -1,14 +1,13 @@
 package com.tom;
 
-import com.tom.models.*;
-import com.tom.views.GameView;
+import com.tom.controllers.GameController;
 
 public class HangmanGame {
     public static void main(String[] args) {
 
-        GameView gameView = new GameView();
+        GameController gameController = new GameController();
 
-        gameView.showMenu(Menu.DIFFICULTY_LEVEL);
+        gameController.startNewGame();
 
     }
 }
