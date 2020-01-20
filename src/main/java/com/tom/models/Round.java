@@ -1,6 +1,6 @@
 package com.tom.models;
 
-public class Game {
+public class Round {
 
     private DifficultyLevel difficultyLevel;
 

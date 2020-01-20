@@ -1,10 +1,19 @@
 package com.tom.models;
 
-public class Menu {
-    String[] menuItems;
+public enum Menu {
 
-    public Menu(String... menuItems) {
+    MAIN("Wybierz opcję", "Nowa gra", "Rekordy", "Koniec gry"),
+    DIFFICULTY_LEVEL("Wybierz poziom trudności", "Łatwy", "Średni", "Trudny");
+
+    private String[] title;
+    private String[] menuItems;
+
+    Menu(String title, String... menuItems) {
         this.menuItems = menuItems;
+    }
+
+    public String[] getTitle() {
+        return title;
     }
 
     public String[] getMenuItems() {

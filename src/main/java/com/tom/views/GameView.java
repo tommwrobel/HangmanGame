@@ -1,21 +1,27 @@
 package com.tom.views;
 
+import com.tom.models.Menu;
+
 import java.util.List;
 
 public class GameView implements GameViewInterface {
 
-    public void shwoTitle() {
+    @Override
+    public void showTitle() {
         System.out.println("+---------------------------+");
         System.out.println("|        Hangman Game       |");
         System.out.println("+---------------------------+");
     }
 
-    public void showMenu(String[] menu) {
+    @Override
+    public void showMenu(Menu menu) {
 
-        int menuItemsCount = menu.length;
+        int menuItemsCount = menu.getMenuItems().length;
+        String[] menuItems = menu.getMenuItems();
 
+        System.out.println(menu.getTitle() + ":");
         for (int i = 0; i < menuItemsCount; i++) {
-            System.out.println("[" + (i + 1) + "] " + menu[i]);
+            System.out.println("[" + (i + 1) + "] " + menuItems[i]);
         }
         System.out.println("Wybierz opcję: ");
     }
@@ -30,6 +36,7 @@ public class GameView implements GameViewInterface {
         System.out.println(message);
     }
 
+    @Override
     public void showHangman(int chancesLeft) {
         switch (chancesLeft) {
             case 10:
@@ -123,12 +130,7 @@ public class GameView implements GameViewInterface {
         }
     }
 
-    public void showChances(int chancesLeft, int totalChances) {
-        System.out.println("+---------------------------+");
-        System.out.println("|     Zostało: 5/9 szans    |");
-        System.out.println("+---------------------------+");
-    }
-
+    @Override
     public void showWord(List<String> guessedLetters, String word) {
 
         int numberOfLetters = word.length();
