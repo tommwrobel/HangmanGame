@@ -2,15 +2,15 @@ package com.tom.controller;
 
 import com.tom.model.DifficultyLevel;
 import com.tom.model.Menu;
-import com.tom.view.GameView;
+import com.tom.view.GameViewInterface;
 
 import java.util.Scanner;
 
 public class InputController {
-    private final GameView gameView;
+    private final GameViewInterface gameView;
     private final Scanner scanner;
 
-    public InputController(GameView gameView) {
+    public InputController(GameViewInterface gameView) {
         this.gameView = gameView;
         scanner = new Scanner(System.in);
     }

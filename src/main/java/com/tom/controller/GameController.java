@@ -4,10 +4,11 @@ import com.tom.model.Menu;
 import com.tom.model.Player;
 import com.tom.model.Round;
 import com.tom.view.GameView;
+import com.tom.view.GameViewInterface;
 
 public class GameController {
 
-    private GameView gameView;
+    private GameViewInterface gameView;
     private InputController inputController;
 
     public GameController() {
@@ -42,7 +43,7 @@ public class GameController {
             int numberOfGuessedLetters = round.checkLetter(letterFromUser);
 
             if (numberOfGuessedLetters > 0) {
-                gameView.showMessage("Brawo! Odgadłeś " + numberOfGuessedLetters + " liter!");
+                gameView.showMessage(String.format("Brawo! Odgadłeś %d liter!", numberOfGuessedLetters));
                 player.addScore(numberOfGuessedLetters);
             } else {
                 gameView.showMessage("Niestety, tej litery nie ma w słowie!");
