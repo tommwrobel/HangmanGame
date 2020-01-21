@@ -1,4 +1,4 @@
-package com.tom.models;
+package com.tom.model;
 
 public enum DifficultyLevel {
 

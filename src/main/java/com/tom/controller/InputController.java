@@ -1,8 +1,8 @@
-package com.tom.controllers;
+package com.tom.controller;
 
-import com.tom.models.DifficultyLevel;
-import com.tom.models.Menu;
-import com.tom.views.GameView;
+import com.tom.model.DifficultyLevel;
+import com.tom.model.Menu;
+import com.tom.view.GameView;
 
 import java.util.Scanner;
 

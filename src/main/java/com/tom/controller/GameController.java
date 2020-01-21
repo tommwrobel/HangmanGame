@@ -1,9 +1,9 @@
-package com.tom.controllers;
+package com.tom.controller;
 
-import com.tom.models.Menu;
-import com.tom.models.Player;
-import com.tom.models.Round;
-import com.tom.views.GameView;
+import com.tom.model.Menu;
+import com.tom.model.Player;
+import com.tom.model.Round;
+import com.tom.view.GameView;
 
 public class GameController {
 

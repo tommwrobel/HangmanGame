@@ -1,4 +1,4 @@
-package com.tom.views;
+package com.tom.view;
 
 import com.tom.model.Menu;
 

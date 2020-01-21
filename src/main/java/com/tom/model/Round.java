@@ -1,4 +1,4 @@
-package com.tom.models;
+package com.tom.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
