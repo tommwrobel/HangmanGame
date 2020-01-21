@@ -15,6 +15,14 @@ public enum DifficultyLevel {
         this.displayName = displayName;
     }
 
+    public static DifficultyLevel fromInt(int difficultyLevel) {
+        if (difficultyLevel <= 0 || difficultyLevel > DifficultyLevel.values().length) {
+            return CHEATER;
+        } else {
+            return DifficultyLevel.values()[difficultyLevel - 1];
+        }
+    }
+
     public int getChancesNumber() {
         return chancesNumber;
     }
