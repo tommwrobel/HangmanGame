@@ -71,6 +71,10 @@ public class Round {
         return numberOfGuessedLetters;
     }
 
+    public Set<String> getGuessedLetters() {
+        return guessedLetters;
+    }
+
     private void addLetterToGuessedList(String letter) {
         guessedLetters.add(letter);
     }

@@ -2,7 +2,7 @@ package com.tom.views;
 
 import com.tom.models.Menu;
 
-import java.util.List;
+import java.util.Set;
 
 public class GameView implements GameViewInterface {
 
@@ -138,20 +138,25 @@ public class GameView implements GameViewInterface {
     }
 
     @Override
-    public void showWord(List<String> guessedLetters, String word) {
+    public void showWord(Set<String> guessedLetters, String word) {
 
         String[] wordLetters = word.split("(?!^)");
 
         for (String letter : wordLetters) {
-            boolean isVisible = false;
-            for (int i = 0; i < guessedLetters.size(); i++) {
-                if (letter.equalsIgnoreCase(guessedLetters.get(i))) {
-                    isVisible = true;
-                }
-            }
-            System.out.print(isVisible ? " " + letter + " " : " _ ");
+            System.out.print(guessedLetters.contains(letter) ? " " + letter + " " : " _ ");
         }
         System.out.println("");
+    }
+
+    public void showWinMessage(String wordToGuess, int chancesLeft) {
+        System.out.println("Brawo! Wygrałeś!");
+        System.out.println("Odgadłeś słowo: " + wordToGuess);
+        System.out.println("Pozostało Ci " + chancesLeft + " szans!");
+    }
+
+    public void showLooseMessage(String wordToGuess) {
+        System.out.println("Niestety, przegrałeś :(");
+        System.out.println("Słowo którego nie odgadłeś to " + wordToGuess);
     }
 
 }

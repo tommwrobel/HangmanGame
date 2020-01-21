@@ -2,7 +2,7 @@ package com.tom.views;
 
 import com.tom.models.Menu;
 
-import java.util.List;
+import java.util.Set;
 
 public interface GameViewInterface {
 
@@ -11,6 +11,6 @@ public interface GameViewInterface {
     void showErrorMessage(String message);
     void showMenu(Menu menu);
     void showHangman(int chancesLeft);
-    void showWord(List<String> guessedLetters, String word);
+    void showWord(Set<String> guessedLetters, String word);
 
 }
