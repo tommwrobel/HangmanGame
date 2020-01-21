@@ -1,18 +1,16 @@
 package com.tom.model;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 
 public class Round {
-
-    private final DifficultyLevel difficultyLevel;
     private final String wordToGuess;
     private final Set<String> guessedLetters;
     private int chancesLeft;
 
     public Round(DifficultyLevel difficultyLevel) {
-        this.difficultyLevel = difficultyLevel;
         this.wordToGuess = getRandomWordFromFile("src/main/resources/words.cvs");
         this.chancesLeft = difficultyLevel.getChancesNumber();
         this.guessedLetters = new HashSet<>();
@@ -23,23 +21,14 @@ public class Round {
     }
 
     public String getRandomWordFromFile(String filename) {
-
         try {
             File file = new File(filename);
-            Scanner scan = new Scanner(file);
-            int numberOfWords = 0;
-            List<String> words = new ArrayList<>();
-
-            while (scan.hasNextLine()) {
-                words.add(scan.nextLine());
-                numberOfWords++;
-            }
-
-            return words.get(random(0, numberOfWords - 1));
-        } catch (FileNotFoundException e) {
+            List<String> words = Files.readAllLines(file.toPath());
+            Collections.shuffle(words);
+            return words.get(0);
+        } catch (IOException e) {
             return "Error";
         }
-
     }
 
     public void deleteChances(int numberToDelete) {
@@ -57,34 +46,20 @@ public class Round {
         int numberOfGuessedLetters = 0;
         letter = letter.toUpperCase();
 
-        if (!letterExistInGuessedLetterList(letter)) {
-            String[] wordToGuess = this.wordToGuess.split("(?!^)");
-            for (String toGuess : wordToGuess) {
-                if (toGuess.equalsIgnoreCase(letter)) {
+        if (!guessedLetters.contains(letter)) {
+            String[] lettersToGuess = this.wordToGuess.split("(?!^)");
+            for (String letterToGuess : lettersToGuess) {
+                if (letterToGuess.equalsIgnoreCase(letter)) {
                     numberOfGuessedLetters++;
-                    addLetterToGuessedList(letter);
+                    guessedLetters.add(letter);
                 }
             }
         }
-
         return numberOfGuessedLetters;
     }
 
     public Set<String> getGuessedLetters() {
         return guessedLetters;
-    }
-
-    private void addLetterToGuessedList(String letter) {
-        guessedLetters.add(letter);
-    }
-
-    private boolean letterExistInGuessedLetterList(String letter) {
-        return guessedLetters.contains(letter);
-    }
-
-    private int random(int min, int max) {
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
     }
 
 }
