@@ -6,9 +6,9 @@ import java.util.*;
 
 public class Round {
 
-    private DifficultyLevel difficultyLevel;
-    private String wordToGuess;
-    private Set<String> guessedLetters;
+    private final DifficultyLevel difficultyLevel;
+    private final String wordToGuess;
+    private final Set<String> guessedLetters;
     private int chancesLeft;
 
     public Round(DifficultyLevel difficultyLevel) {
@@ -54,14 +54,13 @@ public class Round {
     }
 
     public int checkLetter(String letter) {
-
         int numberOfGuessedLetters = 0;
         letter = letter.toUpperCase();
 
         if (!letterExistInGuessedLetterList(letter)) {
             String[] wordToGuess = this.wordToGuess.split("(?!^)");
-            for (int i = 0; i < wordToGuess.length; i++) {
-                if (wordToGuess[i].equalsIgnoreCase(letter)) {
+            for (String toGuess : wordToGuess) {
+                if (toGuess.equalsIgnoreCase(letter)) {
                     numberOfGuessedLetters++;
                     addLetterToGuessedList(letter);
                 }

@@ -7,10 +7,8 @@ import com.tom.views.GameView;
 import java.util.Scanner;
 
 public class InputController {
-
-    private GameView gameView;
-    private Menu menu;
-    private Scanner scanner;
+    private final GameView gameView;
+    private final Scanner scanner;
 
     public InputController(GameView gameView) {
         this.gameView = gameView;
@@ -24,10 +22,8 @@ public class InputController {
     }
 
     public DifficultyLevel getDifficultyLevelFromUser() {
-
         int choosenDifficultyLevelIndex;
         DifficultyLevel choosenDifficultyLevel;
-
         choosenDifficultyLevelIndex = chooseMenuOption(Menu.DIFFICULTY_LEVEL);
 
         switch (choosenDifficultyLevelIndex) {
@@ -43,7 +39,6 @@ public class InputController {
             default:
                 choosenDifficultyLevel = DifficultyLevel.CHEATER;
         }
-
         return choosenDifficultyLevel;
     }
 
@@ -70,21 +65,20 @@ public class InputController {
     }
 
     public String getStringFromUser(String message, int minLength, int maxLength) {
-
         String userInput;
         gameView.showMessage(message);
 
         do {
             userInput = scanner.nextLine();
 
-            if(userInput.length() < minLength || userInput.length() > maxLength) {
+            if (userInput.length() < minLength || userInput.length() > maxLength) {
                 gameView.showErrorMessage("Wpisany ciąg znaków ma niepoprawną długość [" + minLength + "-" + maxLength + "]!");
             }
 
-            if(!userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*")) {
+            if (!userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*")) {
                 gameView.showErrorMessage("Wpisany ciąg znaków zawiera niepoprawne znaki!");
             }
-        } while(userInput.length() < minLength || userInput.length() > maxLength || !userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*"));
+        } while (userInput.length() < minLength || userInput.length() > maxLength || !userInput.matches("[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]*"));
 
         return userInput;
     }

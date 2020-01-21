@@ -1,13 +1,12 @@
 package com.tom.models;
 
 public enum Menu {
-
     MAIN("Wybierz opcję", "Nowa gra", "Koniec gry"),
     AFTER_ROUND("Rozpocząć kolejną rundę?", "Tak", "Nie"),
     DIFFICULTY_LEVEL("Wybierz poziom trudności", "Łatwy", "Średni", "Trudny");
 
-    private String title;
-    private String[] menuItems;
+    private final String title;
+    private final String[] menuItems;
 
     Menu(String title, String... menuItems) {
         this.title = title;
@@ -22,7 +21,4 @@ public enum Menu {
         return menuItems;
     }
 
-    public String getMenuItem(int index) {
-        return menuItems[index];
-    }
 }
