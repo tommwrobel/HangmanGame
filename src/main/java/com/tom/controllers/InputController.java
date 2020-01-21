@@ -22,28 +22,11 @@ public class InputController {
     }
 
     public DifficultyLevel getDifficultyLevelFromUser() {
-        int choosenDifficultyLevelIndex;
-        DifficultyLevel choosenDifficultyLevel;
-        choosenDifficultyLevelIndex = chooseMenuOption(Menu.DIFFICULTY_LEVEL);
-
-        switch (choosenDifficultyLevelIndex) {
-            case 1:
-                choosenDifficultyLevel = DifficultyLevel.EASY;
-                break;
-            case 2:
-                choosenDifficultyLevel = DifficultyLevel.MEDIUM;
-                break;
-            case 3:
-                choosenDifficultyLevel = DifficultyLevel.HARD;
-                break;
-            default:
-                choosenDifficultyLevel = DifficultyLevel.CHEATER;
-        }
-        return choosenDifficultyLevel;
+        int chosenDifficultyLevelIndex = chooseMenuOption(Menu.DIFFICULTY_LEVEL);
+        return DifficultyLevel.fromInt(chosenDifficultyLevelIndex);
     }
 
     public int getIntFromUser(int from, int to) {
-
         int number;
 
         do {
