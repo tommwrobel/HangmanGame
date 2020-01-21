@@ -1,6 +1,6 @@
 package com.tom.views;
 
-import com.tom.models.Menu;
+import com.tom.model.Menu;
 
 import java.util.Set;
 
