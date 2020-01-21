@@ -16,7 +16,6 @@ public class GameController {
     }
 
     public void initializeGame() {
-
         gameView.showTitle();
         int mainMenuChoosenOption = inputController.chooseMenuOption(Menu.MAIN);
 
@@ -33,7 +32,6 @@ public class GameController {
     }
 
     public void startNewRound() {
-
         Player player = new Player(inputController.getStringFromUser("Podaj nazwę gracza:", 3, 20));
         Round round = new Round(inputController.getDifficultyLevelFromUser());
 
@@ -73,7 +71,6 @@ public class GameController {
     }
 
     public void exitGame() {
-
         System.exit(0);
     }
 

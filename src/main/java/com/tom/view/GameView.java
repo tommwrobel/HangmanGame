@@ -15,7 +15,6 @@ public class GameView implements GameViewInterface {
 
     @Override
     public void showMenu(Menu menu) {
-
         int menuItemsCount = menu.getMenuItems().length;
         String[] menuItems = menu.getMenuItems();
 
@@ -139,7 +138,6 @@ public class GameView implements GameViewInterface {
 
     @Override
     public void showWord(Set<String> guessedLetters, String word) {
-
         String[] wordLetters = word.split("(?!^)");
 
         for (String letter : wordLetters) {

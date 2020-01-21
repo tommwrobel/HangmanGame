@@ -7,8 +7,8 @@ public enum DifficultyLevel {
     HARD(6, "trudny"),
     CHEATER(100, "cheater");
 
-    private int chancesNumber;
-    private String displayName;
+    private final int chancesNumber;
+    private final String displayName;
 
     DifficultyLevel(int chancesNumber, String displayName) {
         this.chancesNumber = chancesNumber;
