@@ -141,7 +141,7 @@ public class GameView implements GameViewInterface {
         String[] wordLetters = word.split("(?!^)");
 
         for (String letter : wordLetters) {
-            System.out.print(guessedLetters.contains(letter) ? " " + letter + " " : " _ ");
+            System.out.print(guessedLetters.contains(letter.toUpperCase()) ? " " + letter + " " : " _ ");
         }
         System.out.println("");
     }
