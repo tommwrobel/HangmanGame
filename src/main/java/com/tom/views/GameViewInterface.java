@@ -18,4 +18,8 @@ public interface GameViewInterface {
 
     void showWord(Set<String> guessedLetters, String word);
 
+    void showWinMessage(String message, int chancesLeft);
+
+    void showLooseMessage(String message);
+
 }

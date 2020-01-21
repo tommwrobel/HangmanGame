@@ -145,12 +145,14 @@ public class GameView implements GameViewInterface {
         System.out.println("");
     }
 
+    @Override
     public void showWinMessage(String wordToGuess, int chancesLeft) {
         System.out.println("Brawo! Wygrałeś!");
         System.out.println("Odgadłeś słowo: " + wordToGuess);
         System.out.println("Pozostało Ci " + chancesLeft + " szans!");
     }
 
+    @Override
     public void showLooseMessage(String wordToGuess) {
         System.out.println("Niestety, przegrałeś :(");
         System.out.println("Słowo którego nie odgadłeś to " + wordToGuess);
